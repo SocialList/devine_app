@@ -12,14 +12,14 @@
   <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
   <br>
   <%= link_to "Login", user_session_path %>
-
-
+  <br>
+  <%= link_to "Sign in with Github", user_github_omniauth_authorize_path %>
+  <br>
 
 
 
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
-<%= console %>
 <%= yield %>
 
 </body>
