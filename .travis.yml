@@ -1,0 +1,12 @@
+rvm: '2.2.3'
+language: ruby
+cache: bundler
+
+notifications:
+  email: false
+
+script: bundle exec rspec spec
+script:
+  - bundle exec bin/rake db:create
+  - bundle exec bin/rake db:migrate
+  - bundle exec rspec spec
