@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'omniauth-github'
 gem 'devise'
 gem 'bootstrap-sass', '~> 3.3.6'
 
@@ -42,6 +43,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'factory_girl_rails'
+  gem 'dotenv-rails'
 end
 
 group :development do
