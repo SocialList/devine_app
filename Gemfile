@@ -3,8 +3,10 @@ source 'https://rubygems.org'
 gem 'omniauth-github'
 gem 'devise'
 gem 'bootstrap-sass', '~> 3.3.6'
-
+gem 'bootstrap-will_paginate'
+gem 'will_paginate'
 gem 'simple_form'
+gem 'mailboxer'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.7.1'
