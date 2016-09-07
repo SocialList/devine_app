@@ -4,11 +4,7 @@ feature 'Signing up' do
   scenario 'user can signup' do
     visit '/'
     click_link 'Sign up'
-    fill_in 'User name', with: "Whatever"
-    fill_in 'Email', with: "Whatever@email.com"
-    fill_in 'Password', with: "secretsecret7", :match => :prefer_exact
-    fill_in 'Password confirmation', with: "secretsecret7", :match => :prefer_exact
-    click_button 'Sign up'
-    expect(page).to have_content "Welcome!"
+    sign_up
+    expect(page).to have_content "Welcome! You have signed up successfully."
   end
 end
