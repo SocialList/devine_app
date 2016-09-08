@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'github/index'
+
   devise_for :users, :controllers => { registrations: 'registrations' }
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -9,6 +11,7 @@ Rails.application.routes.draw do
 
   # root to: "users#new"
   get "/auth/:provider/callback" => "sessions#create"
+  # get "/auth/failure" => "sessions#failure"
   get "/signout" => "sessions#destroy", :as => :signout
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
