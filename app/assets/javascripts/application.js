@@ -16,3 +16,6 @@
 //= require_tree .
 //= require jquery
 //= require bootstrap-sprockets
+//= require jquery.turbolinks
+//= require chosen-jquery
+//= require messages

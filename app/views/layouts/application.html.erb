@@ -7,8 +7,8 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-
+  <%= link_to "Home", root_path %>
+  <br>
   <%= link_to "Sign up", new_user_registration_path %>
   <br>
   <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
@@ -16,8 +16,21 @@
   <%= link_to "Login", user_session_path %>
   <br>
   <%= link_to "Sign in with Github", "/auth/github" %>
+  <br>
+  <%= link_to 'Your Conversations', conversations_path %>
+  <br>
+  <div class="container">
+    <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %>">
+        <%= value %>
+      </div>
+    <% end %>
 
+    <div class="page-header">
+      <h1><%= yield :page_header %></h1>
+    </div>
 
+  </div>
 
 
   <p class="notice"><%= notice %></p>

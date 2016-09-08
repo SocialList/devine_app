@@ -3,15 +3,23 @@ source 'https://rubygems.org'
 gem 'omniauth-github'
 gem 'devise'
 gem 'bootstrap-sass', '~> 3.3.6'
+gem 'bootstrap-will_paginate'
+gem 'will_paginate'
 gem "octokit", "~> 4.0"
 gem 'simple_form'
+gem 'jquery-turbolinks'
+# mailboxer gems
+gem "mailboxer"
+gem 'gravatar_image_tag'
+gem 'chosen-rails'
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.7.1'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.15'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
+gem 'sass-rails', '~> 5.0' # use '~> 4.0.5' if chosen-rails raised an error
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views

@@ -13,6 +13,10 @@ Rails.application.routes.draw do
   get "/auth/:provider/callback" => "sessions#create"
   # get "/auth/failure" => "sessions#failure"
   get "/signout" => "sessions#destroy", :as => :signout
+  # conversations routes
+  resources :conversations, only: [:index, :show, :destroy]
+  # messages routes
+  resources :messages, only: [:new, :create]
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
