@@ -1,0 +1,9 @@
+<h1>Public Repositories</h1>
+
+<ul style="list-style-type: none;">
+  <% @repositories.each do |repo| %>
+    <li>
+      <p><b><%= repo[:name].capitalize %></b>: <i><%= repo[:description].capitalize %></i> <b>[Watchers: <%= repo[:watchers] %>, Forks: <%= repo[:forks]%>, Stargazers: <%= repo[:stargazers_count] %>]</b></p>
+    </li>
+  <% end %>
+</ul>

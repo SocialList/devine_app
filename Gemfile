@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'omniauth-github'
 gem 'devise'
 gem 'bootstrap-sass', '~> 3.3.6'
-
+gem "octokit", "~> 4.0"
 gem 'simple_form'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
