@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   has_one :github_profile
-  validates :user_name, presence: true, length: { minimum: 4, maximum: 50 }
+  validates :user_name, presence: true, length: { minimum: 2, maximum: 50 }
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
