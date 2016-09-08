@@ -1,27 +1,31 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>DevineApp</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-  <%= link_to "Sign up", new_user_registration_path %>
-  <br>
-  <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-  <br>
-  <%= link_to "Login", user_session_path %>
-  <br>
-  <%= link_to "Sign in with Github", "/auth/github" %>
+	<head>
+		<title>DevineApp</title>
+		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+		<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+		<%= csrf_meta_tags %>
+	</head>
+	<body>
+		<%= link_to "Sign up", new_user_registration_path %>
+		<br>
+		<% if user_signed_in? && current_user.provider == nil %>
+		<%= link_to "Sign out", destroy_user_session_path, method: :delete  %>
+		<% elsif user_signed_in? && current_user.provider =! nil%>
+		<%= link_to "Sign out", signout_path %>
 
+	<% else %>
+		<br>
+		<%= link_to "Log in", new_user_session_path %>
+		<br>
+		<%= link_to "Sign in with Github", "/auth/github" %>
+		<% end %>
 
+		<% console %>
 
-<% console %>
+		<p class="notice"><%= notice %></p>
+		<p class="alert"><%= alert %></p>
+		<%= yield %>
 
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-<%= yield %>
-
-</body>
+	</body>
 </html>

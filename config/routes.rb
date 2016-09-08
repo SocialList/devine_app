@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   # root to: "users#new"
   get "/auth/:provider/callback" => "sessions#create"
-  get "/signout" => "sessions#destroy", :as => :signout
+  get "/users/sign_out" => "sessions#destroy", :as => :signout
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
