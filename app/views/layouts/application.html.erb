@@ -7,22 +7,20 @@
 		<%= csrf_meta_tags %>
 	</head>
 	<body>
-		<%= link_to "Sign up", new_user_registration_path %>
+
+    <%= link_to "Sign up", new_user_registration_path %>
 		<br>
 		<% if user_signed_in? && current_user.provider == nil %>
-		<%= link_to "Sign out", destroy_user_session_path, method: :delete  %>
+		  <%= link_to "Sign out", destroy_user_session_path, method: :delete  %>
 		<% elsif user_signed_in? && current_user.provider =! nil%>
-		<%= link_to "Sign out", signout_path %>
+		  <%= link_to "Sign out", signout_path %>
 
-	<% else %>
-		<br>
-		<%= link_to "Log in", new_user_session_path %>
-		<br>
-		<%= link_to "Sign in with Github", "/auth/github" %>
+	  <% else %>
+		  <br>
+		    <%= link_to "Login", new_user_session_path %>
+		  <br>
+		    <%= link_to "Sign in with Github", "/auth/github" %>
 		<% end %>
-
-		<% console %>
-
 		<p class="notice"><%= notice %></p>
 		<p class="alert"><%= alert %></p>
 		<%= yield %>
