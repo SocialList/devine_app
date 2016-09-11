@@ -17,6 +17,10 @@ class UsersController < ApplicationController
 
   # PATCH/PUT /users/1
   def update
+    if params[:user][:password].blank?
+      params[:user].delete(:password)
+      params[:user].delete(:password_confirmation)
+    end
     # 2015-07-23 RICHARD: Updated to use strong parameters
     if @user.update_attributes(user_params)
       redirect_to @user, notice: 'User was successfully updated.'
@@ -38,6 +42,6 @@ class UsersController < ApplicationController
 
     # 2015-07-23 RICHARD: Added to implement strong parameters
     def user_params
-      params.require(:user).permit(:name, :user, :about)
+      params.require(:user).permit(:name, :user, :about, :provider, :password, :email)
     end
   end

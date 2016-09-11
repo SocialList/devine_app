@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
       :recoverable, :rememberable, :trackable, :validatable, :omniauthable
   validates_presence_of :email
   mount_uploader :image, ImageUploader
+
   has_many :authorizations
 
   def self.new_with_session(params,session)
@@ -14,24 +15,22 @@ class User < ActiveRecord::Base
         user.attributes = params
         user.valid?
       end
+    elsif session["callback.user_attributes"]
+      from_omniauth(session["callback.user_attributes"], session[:user])
     else
       super
     end
   end
 
   def self.from_omniauth(auth, current_user)
-    authorization = Authorization.where(:provider => auth.provider, :uid => auth.uid.to_s, :token => auth.credentials.token, :secret => auth.credentials.secret).first_or_initialize
+    authorization = Authorization.where(:provider => auth.provider, :uid => auth.uid.to_s).first_or_initialize
     if authorization.user.blank?
-      user = current_user || User.where('email = ?', auth["info"]["email"]).first
+      user = current_user || User.where(:email =>  auth["info"]["email"]).first
       if user.blank?
-       user = User.new
-       user.password = Devise.friendly_token[0,10]
-       user.name = auth.info.name
-       user.email = auth.info.email
-       if auth.provider == "twitter" 
-         user.save(:validate => false) 
-       else
-         user.save
+       user = User.create do |user|
+         user.password = Devise.friendly_token[0,10]
+         user.name = auth.info.name
+         user.email = auth.info.email
        end
      end
      authorization.username = auth.info.nickname
